@@ -13,6 +13,8 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
 
+        // Set initial data to empty
+        // on players and ranking
         this.state = {
             players: {},
             ranking: {}
@@ -20,10 +22,13 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
+        // When the component is mounted, we can
+        // setup the socket listener functions
         this.setupSocketListeners();
     }
 
     setupSocketListeners() {
+        // Some longging when connected and disconnected
         socket.on('connect', data => {
             console.log('Socket connected');
         });
@@ -32,6 +37,9 @@ export default class App extends React.Component {
             console.log('Socket disconnected');
         });
 
+        // When we receive 'data' packet
+        // check the 'op' variable an decide
+        // based on that which variable we want to update
         socket.on("data", data => {
             switch(data.op) {
                 case PLAYERS:
@@ -50,6 +58,8 @@ export default class App extends React.Component {
     }
 
     render() {
+        // Read the variables to this context, so
+        // we can use them inside return function without hassle
         let players = this.state.players;
         let ranking = this.state.ranking;
 
