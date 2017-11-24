@@ -3,11 +3,13 @@ import io from 'socket.io-client';
 
 import Players from './players.js';
 import Ranking from './ranking';
+import Profile from './profile.js';
 
 const socket    = io('http://localhost:3001');
 
 const PLAYERS   = 1;
 const RANKING   = 2;
+const PROFILE   = 3;
 
 export default class App extends React.Component {
     constructor(props) {
@@ -17,7 +19,8 @@ export default class App extends React.Component {
         // on players and ranking
         this.state = {
             players: {},
-            ranking: {}
+            ranking: {},
+            profile: {},
         };
     }
 
@@ -48,6 +51,9 @@ export default class App extends React.Component {
                 case RANKING:
                     this.setState({ statistics: data.json});
                     break;
+                case PROFILE:
+                    this.setState({ profile: data.json});
+                    break;
                 default:
                     console.log('Unrecognized OP code.');
                     console.log(data);
@@ -62,6 +68,7 @@ export default class App extends React.Component {
         // we can use them inside return function without hassle
         let players = this.state.players;
         let ranking = this.state.ranking;
+        let profile = this.state.profile;
 
         return (
             <div className="mainView">
@@ -70,6 +77,9 @@ export default class App extends React.Component {
                 </div>
                 <div className="rankingView">
                     <Ranking data={ranking}/>
+                </div>
+                <div className="profileView">
+                    <Profile data={profile}/>
                 </div>
                 <div className="controlsView">
                     <div>{/* status */}</div>

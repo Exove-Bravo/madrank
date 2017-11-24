@@ -19,8 +19,19 @@ class Client {
             json: [
                 {name: 'pekka', position: 1},
                 {name: 'marko', position: 2},
-                {name: 'kalle', position: 2}
+                {name: 'kalle', position: 3},
+                {name: 'Biswa', position: 4}
             ]
+        });
+
+        this.socket.emit('data', {
+            op: 3,
+            json: {
+                name: 'Mr/s. Your Name',
+                email: 'your.name@exove.com',
+                phone: '+358501234567',
+                position: 'Rock*'
+            }
         });
     }
 }
