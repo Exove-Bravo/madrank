@@ -1,11 +1,11 @@
 import React from 'react';
-import io from 'socket.io-client';
+
+import {socketListener} from '../lib/io.js';
 
 import Players from './players.js';
 import Ranking from './ranking';
 import Profile from './profile.js';
-
-const socket    = io('http://localhost:3001');
+import Controllers from './controllers.js';
 
 const PLAYERS   = 1;
 const RANKING   = 2;
@@ -31,19 +31,11 @@ export default class App extends React.Component {
     }
 
     setupSocketListeners() {
-        // Some longging when connected and disconnected
-        socket.on('connect', data => {
-            console.log('Socket connected');
-        });
-
-        socket.on("disconnect", data => {
-            console.log('Socket disconnected');
-        });
 
         // When we receive 'data' packet
         // check the 'op' variable an decide
         // based on that which variable we want to update
-        socket.on("data", data => {
+        socketListener(data => {
             switch(data.op) {
                 case PLAYERS:
                     this.setState({ players: data.json });
@@ -59,7 +51,6 @@ export default class App extends React.Component {
                     console.log(data);
                     break;
             }
-
         });
     }
 
@@ -82,8 +73,7 @@ export default class App extends React.Component {
                     <Profile data={profile}/>
                 </div>
                 <div className="controlsView">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
+                    <Controllers players={players}/>
                 </div>
             </div>
         );

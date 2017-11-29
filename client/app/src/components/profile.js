@@ -23,21 +23,21 @@ export default class Profile extends React.Component {
         }
 
         return (
-            <div class="container">
+            <div className="container">
                 <h3>Your Profile</h3>
-                <div class="row">
+                <div className="row">
                     <span>Name: </span>
                     <span>{profile.name}</span>
                 </div>
-                <div class="row">
+                <div className="row">
                     <span>Email: </span>
                     <span>{profile.email}</span>
                 </div>
-                <div class="row">
+                <div className="row">
                     <span>Phone: </span>
                     <span>{profile.phone}</span>
                 </div>
-                <div class="row">
+                <div className="row">
                     <span>Position: </span>
                     <span>{profile.position }</span>
                 </div>
