@@ -33,8 +33,6 @@ export default class Controllers extends React.Component {
         let showTournament = this.state.addTournament;
         let showMatch = this.state.addMatch;
 
-        let players = this.props.players;
-
         return (
             <div>
                 <div className="controls">
@@ -43,7 +41,7 @@ export default class Controllers extends React.Component {
                 </div>
                 <div className="controls-modal">
                     {showTournament ? <Tournament/> : null}
-                    {showMatch ? <Match players={players}/> : null}
+                    {showMatch ? <Match/> : null}
                 </div>
             </div>
         );
