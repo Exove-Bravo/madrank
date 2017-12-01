@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import './index.css';
+import AppComponent from './components/app';
 
+//import './index.css';
+
+const App = () => (
+    <MuiThemeProvider>
+        <AppComponent />
+    </MuiThemeProvider>
+);
 
 // ========================================
 

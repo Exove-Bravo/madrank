@@ -17,10 +17,36 @@ class Client {
         this.socket.emit('data', {
             op: 1,
             json: [
-                {name: 'pekka', position: 1},
-                {name: 'marko', position: 2},
-                {name: 'kalle', position: 3},
-                {name: 'Biswa', position: 4}
+                {
+                    img: 'images/players/pekka.jpg',
+                    title: 'Pekka',
+                    position: 100,
+                },
+                {
+                    img: 'images/players/marko.jpg',
+                    title: 'Marko',
+                    position: 95,
+                },
+                {
+                    img: 'images/players/kalle.jpg',
+                    title: 'Kalle',
+                    position: 90,
+                },
+                {
+                    img: 'images/players/biswa.jpg',
+                    title: 'Biswa',
+                    position: 90,
+                },
+                {
+                    img: 'images/players/no-picture.jpg',
+                    title: 'Antti',
+                    position: 100,
+                },
+                {
+                    img: 'images/players/vadim.jpg',
+                    title: 'Vadim',
+                    position: 100,
+                },
             ]
         });
 
